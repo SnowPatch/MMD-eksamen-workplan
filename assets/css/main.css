@@ -1,0 +1,21 @@
+/** Fonts **/
+
+@import url("/assets/fonts/OpenSans/OpenSans.css");
+
+
+/** Styles **/
+
+body {
+  background: #FFFFFF;
+  font-family: OpenSans;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+h1 {
+  color: #212121;
+  text-align: center;
+  font-weight: 400;
+  display: block;
+  margin-top: calc(5% + 20px);
+}

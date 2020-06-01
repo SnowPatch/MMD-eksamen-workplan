@@ -1,0 +1,161 @@
+@extends('base')
+
+@block('title', 'Opret vagtplan - Workplan')
+
+@block('styles')
+<link rel="stylesheet" href="@asset('css/auth/main.css', true)">
+@endblock
+
+@block('body')
+<style>
+    div[data-step] {
+        display: none;
+    }
+    div[data-step='1'] {
+        display: inline-block;
+    }
+</style>
+
+<nav class="container">
+    <div class="row">
+        <a href="/" class="logo">
+            <img src="@asset('img/workplan.svg')" alt="Workplan logo">
+        </a>
+    </div>
+</nav>
+
+<section id="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+
+                <div class="notification"></div>
+
+                <form id="form">
+
+                    <h1>Opret din virksomhed</h1>
+                    <div data-step="1">
+                        <p>Indtast CVR nummer</p>
+                        <div class="input">
+                            <input name="cvr" type="number" id="cvr" required />
+                            <label for="cvr">CVR nummer</label>
+                        </div>
+                        <input class="full" type="button" value="Fortsæt" data-id="continue" />
+                    </div>
+            
+                    <div data-step="2">
+                        <p>Indtast virksomhedsnavn</p>
+                        <div class="input uri">
+                            <input id="uri" name="uri" type="text" onkeyup="this.value=this.value.toLowerCase()" required />
+                            <label for="uri">Virksomhedsnavn</label>
+                            <a>workplan.dk/</a>
+                        </div>
+                        <input type="button" value="Tilbage" data-id="back" class="back" />
+                        <input type="button" value="Fortsæt" data-id="continue" />
+                    </div>
+            
+                    <div data-step="3">
+                        <input name="company" type="hidden" />
+                        <p>Indtast email adresse</p>
+                        <div class="input">
+                            <input name="email" id="email" type="email" required />
+                            <label for="email">Email adresse</label>
+                        </div>
+                        <input type="button" value="Tilbage" data-id="back"class="back" />
+                        <input type="button" value="Opret vagtplan" data-id="submit" />
+                    </div>
+            
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="copyright">
+    <div class="container">
+        <p>Copyright © 2020 Workplan. Alle Rettigheder Reserveret.</p>
+        <span>Powered by Netclear</span>
+    </div>
+</footer>
+@endblock
+
+@block('scripts')
+<script>
+function notify(type, message) {
+    select('div.notification').innerHTML = '<div class="notify-'+type+'">'+message+'</div>';
+}
+
+var visible = 1;
+function steps(id) {
+    var steps = selectAll('[data-step]');
+    for (var i=0,l=steps.length; i<l; i++) {
+        steps[i].style.display = 'none';
+    }
+    select('div.notification').innerHTML = '';
+    select('[data-step="'+id+'"]').style.display = 'inline-block';
+    visible = id;
+}
+
+listenAll('[data-id="back"]', 'click', function() {
+    steps(visible-=1);
+});
+
+listen('[data-step="1"] [data-id="continue"]', 'click', function() {
+    post({
+        url: '@self',
+        data: { request:'cvr-lookup', cvr:select('[name="cvr"]').value },
+        type: 'application/json', 
+        done: function(r) {
+            if (typeof r.status !== 'undefined') {
+                if (r.status == true) {
+                    select('[name="cvr"]').value = r.data.cvr;
+                    select('[name="company"]').value = r.data.name;
+                    select('[name="uri"]').value = (r.data.name.toLowerCase().replace(/[^\w\s]/g, '')).replace(/\s/g, '-');
+                    select('[name="email"]').value = r.data.email;
+                    steps(2);
+                } else {
+                    notify('error', r.data);
+                }
+            } else {
+                notify('error', 'Noget gik galt. Prøv igen senere');
+            }
+        }
+    });
+});
+
+listen('[data-step="2"] [data-id="continue"]', 'click', function() {
+    if (select('[name="uri"]').value.length > 3) {
+        steps(3);
+    } else {
+        notify('error', 'Indtast et link på over 3 tegn');
+    }
+});
+
+listen('[data-id="submit"]', 'click', function() {
+    alert('Oprettelse af vagtplaner er lukket');
+    // post({
+    //     url: '@self',
+    //     data: { 
+    //         request:'registration', 
+    //         cvr:select('[name="cvr"]').value, 
+    //         name:select('[name="company"]').value, 
+    //         uri:select('[name="uri"]').value, 
+    //         email:select('[name="email"]').value
+    //     },
+    //     type: 'application/json', 
+    //     done: function(r) {
+    //         if (typeof r.status !== 'undefined') {
+    //             if (r.status == true) {
+    //                 notify('success', 'Vagtplanen blev oprettet. Du vil om få minutter modtage en email med login-oplysninger');
+    //             } else {
+    //                 notify('error', r.data);
+    //             }
+    //         } else {
+    //             notify('error', 'Noget gik galt. Prøv igen senere');
+    //         }
+    //     }
+    // });
+});
+</script>
+@endblock

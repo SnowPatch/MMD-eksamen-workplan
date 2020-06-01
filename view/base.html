@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+
+    <title>@insert('title')</title>
+    <meta name="description" content="Workplan">
+    <meta name="author" content="Workplan">
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    @insert('styles')
+    <link rel="stylesheet" href="@asset('css/reset.css', true)">
+    <link rel="stylesheet" href="@asset('css/grid.css', true)">
+    <link rel="icon" type="image/svg+xml" href="@asset('img/favicon.svg')">
+    <link rel="alternate icon" href="@asset('img/favicon.ico')">
+  
+</head>
+<body>
+
+@insert('body')
+
+</body>
+
+<script src="@asset('js/main.js', true)"></script>
+@insert('scripts')
+
+</html>

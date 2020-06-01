@@ -1,0 +1,151 @@
+@extends('base')
+
+@block('title', 'Workplan')
+
+@block('styles')
+<link rel="stylesheet" href="@asset('css/main/main.css', true)">
+@endblock
+
+@block('body')
+<nav class="container">
+    <div class="row">
+        <a href="/" class="logo">
+            <img src="@asset('img/workplan.svg')" alt="Workplan logo">
+        </a>
+        <button class="mobiletoggle" id="mobileToggle" onclick="ToggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="navheader" id="menu">
+            <li><a class="active" href="/">Forside</a></li>
+            <li><a href="/">Funktioner</a></li>
+            <li><a href="/">Priser</a></li>
+            <li><a href="/">Kontakt</a></li>
+            <li><a class="button login" href="/register">Opret vagtplan</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7">
+                <h1>Gratis vagtplan til <br>både private og erhverv</h1>
+                <p>Workplan er simpel online vagtplanlægning til både private og erhverv. Opret vores gratis starter-pakke på få minutter eller find den pakke der bedst passer til dig og din virksomhed.</p>
+                <a href="/register" class="button primary">Kom godt igang</a>
+            </div>
+            <div class="col-md-offset-1 col-sm-5 col-md-4">
+                <img class="splash" src="@asset('img/undraw_absorbed_in_xahs.svg')" alt="undraw man absorbed with work">
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="onTheFly">
+    <div class="container">
+        <h2>Tag vagtplanen med i lommen</h2>
+        <p>Nu er det slut med forvirrende excel ark og bunkevis af fysiske vagtplaner. Med Workplan har du nem og sikker adgang til dine data, uanset om du foretrækker at bruge en stationær computer, laptop, telefon, tablet eller endda skærmen på et Smart-Køleskab.</p>
+        <div class="col-sm-6 col-sm-offset-3">
+            <img class="splash" src="@asset('img/undraw_businessman_97x4.svg')" alt="undraw businessman walking">
+        </div>
+    </div>
+</section>
+
+<section id="moreTime">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Få mere tid til dig selv og dit arbejde</h2>
+                <p>Workplan gør det både nemt og hurtigt at holde styr på vagter. Det betyder at både du og dine medarbejdere sparer tid og energi som kan betyde mere tid til at tjene penge.</p>
+                <a href="/" class="button secondary">Se de mange funktioner</a>
+            </div>
+            <div class="col-sm-6">
+                <img class="splash" src="@asset('img/undraw_team_page_pgpr.svg')" alt="undraw team coworkers">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="prices">
+    <div class="container">
+        <h2>Priser & pakker</h2>
+        <p>Alle pakkerne har gratis oprettelse og kan opsiges/ændres ved udgangen af den betalte periode.</p>
+        <div class="row offers">
+            <div class="col-xs-12 col-sm-4 offer">
+                <h3>STARTER</h3>
+                <h4>GRATIS</h4>
+                <p class="annotation">For evigt</p>
+                <ul>
+                    <li>1-5 medarbejdere</li>
+                    <li>Op til 5 afdelinger</li>
+                    <li>&times;</li>
+                    <li>&times;</li>
+                    <li>&times;</li>
+                </ul>
+                <a href="/" class="button">Opret vagtplan</a>
+            </div>
+            <div class="col-xs-12 col-sm-4 offer highlight">
+                <h3>BUSINESS</h3>
+                <h4>319 DKK</h4>
+                <p class="annotation">Per måned</p>
+                <ul>
+                    <li>1-60 medarbejdere</li>
+                    <li>Op til 30 afdelinger</li>
+                    <li>Fælles kalender</li>
+                    <li>Personlig kalender</li>
+                    <li>Beskedsystem</li>
+                </ul>
+                <a href="/" class="button primary">Opret vagtplan</a>
+            </div>
+            <div class="col-xs-12 col-sm-4 offer">
+                <h3>PREMIUM</h3>
+                <h4>159 DKK</h4>
+                <p class="annotation">Per måned</p>
+                <ul>
+                    <li>1-20 medarbejdere</li>
+                    <li>Op til 10 afdelinger</li>
+                    <li>Fælles kalender</li>
+                    <li>Personlig kalender</li>
+                    <li>Beskedsystem</li>
+                </ul>
+                <a href="/" class="button">Opret vagtplan</a>
+            </div>
+        </div>
+        <p class="contact">Brug for flere medarbejdere eller funktioner? <a href="/" class="button secondary">Kontakt os</a> og få en skræddersyet løsning</p>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="col-xs-12">
+            <img class="logo" src="@asset('img/workplan_white.svg')" alt="White workplan logo">
+        </div>
+        <ul>
+            <li><a href="/">Kontakt</a></li>
+            <li><a href="/">Cookies</a></li>
+            <li><a href="/">Opret vagtplan</a></li>
+            <li><a href="/">Mød holdet</a></li>
+        </ul>
+        <ul class="footerinfo">
+            <li>Copyright © 2020 Workplan, Alle Rettigheder Reserveret</li>
+            <li>Stationsvej 1, 5000 Odense C</li>
+            <li>CVR: 12345678</li>
+        </ul>
+    </div>
+</footer>
+
+<script>
+    var toggle = document.getElementById('mobileToggle')
+    var menu = document.getElementById('menu')
+    var body = document.getElementsByTagName('body')
+    // var heroImg = document.getElementsByClassName('hero')
+
+    function ToggleMenu() {
+        toggle.classList.toggle('active')
+        menu.classList.toggle('active')
+        body[0].classList.toggle('lock')
+        // heroImg[0].classList.toggle('active')
+    }
+</script>
+@endblock

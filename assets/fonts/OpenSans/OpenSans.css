@@ -1,0 +1,67 @@
+@font-face { 
+font-family: OpenSans; 
+src: url(OpenSans-Light.ttf);
+font-weight: 100;
+font-display: swap;
+}
+@font-face { 
+font-family: OpenSans; 
+src: url(OpenSans-Regular.ttf);
+font-weight: 400;
+font-display: swap;
+}
+@font-face { 
+font-family: OpenSans; 
+src: url(OpenSans-Semibold.ttf);
+font-weight: 600;
+font-display: swap;
+}
+@font-face { 
+font-family: OpenSans; 
+src: url(OpenSans-Bold.ttf);
+font-weight: 700;
+font-display: swap;
+}
+@font-face { 
+font-family: OpenSans; 
+src: url(OpenSans-ExtraBold.ttf);
+font-weight: 900;
+font-display: swap;
+}
+
+/* Italic */
+@font-face { 
+font-family: OpenSans; 
+src: url(OpenSans-LightItalic.ttf);
+font-weight: 100;
+font-style: italic;
+font-display: swap;
+}
+@font-face { 
+font-family: OpenSans; 
+src: url(OpenSans-Italic.ttf);
+font-weight: 400;
+font-style: italic;
+font-display: swap;
+}
+@font-face { 
+font-family: OpenSans; 
+src: url(OpenSans-SemiboldItalic.ttf);
+font-weight: 600;
+font-style: italic;
+font-display: swap;
+}
+@font-face { 
+font-family: OpenSans; 
+src: url(OpenSans-BoldItalic.ttf);
+font-weight: 700;
+font-style: italic;
+font-display: swap;
+}
+@font-face { 
+font-family: OpenSans; 
+src: url(OpenSans-ExtraBoldItalic.ttf);
+font-weight: 900;
+font-style: italic;
+font-display: swap;
+}

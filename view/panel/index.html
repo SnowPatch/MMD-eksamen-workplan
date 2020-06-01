@@ -1,0 +1,36 @@
+@extends('panel.panel')
+
+@block('title', 'Forside - Workplan Kontrolpanel')
+
+@block('name', $client['name'])
+@block('uri', $client['uri'])
+
+@block('content')
+	<div class="row">
+	  <div class="col-xs-12">
+			
+		<div class="title-container"> 
+			<h4>Kontrolpanel</h4>
+		  	<h2>Velkommen tilbage</h2>
+		</div>
+
+		<div class="row demo-images">
+
+			<div class="col-xs-12 col-md-2">
+				<img src="@asset('img/demo/messages.jpg')" alt="Beskeder" />
+			</div>
+
+			<div class="col-xs-12 col-md-7">
+				<img src="@asset('img/demo/week.jpg')" alt="Denne uge" />
+				<img src="@asset('img/demo/shifts.jpg')" alt="Vagter" />
+			</div>
+
+			<div class="col-xs-12 col-md-3">
+				<img src="@asset('img/demo/day.jpg')" alt="I dag" />
+			</div>
+
+		</div>
+			
+	  </div>
+	</div>
+@endblock

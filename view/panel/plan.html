@@ -1,0 +1,27 @@
+@extends('panel.panel')
+
+@block('title', 'Vagtplan - Workplan Kontrolpanel')
+
+@block('name', $client['name'])
+@block('uri', $client['uri'])
+
+@block('content')
+	<div class="row">
+	  <div class="col-xs-12">
+			
+		<div class="title-container">
+            <h4>Vagtplan</h4>
+		    <h3>Juni 2020, uge 23</h3>
+		</div>
+
+		<div class="row demo-images">
+
+			<div class="col-xs-12">
+				<img src="@asset('img/demo/plan.jpg')" alt="Vagtplan" />
+			</div>
+
+		</div>
+			
+	  </div>
+	</div>
+@endblock

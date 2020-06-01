@@ -1,0 +1,27 @@
+@extends('panel.panel')
+
+@block('title', 'Opsætning - Workplan Kontrolpanel')
+
+@block('name', $client['name'])
+@block('uri', $client['uri'])
+
+@block('content')
+	<div class="row">
+	  <div class="col-xs-12">
+			
+		<div class="title-container">
+            <h4>Opsætning</h4>
+		    <h3>Skift design på kontrolpanelet</h3>
+		</div>
+
+		<div class="row demo-images">
+
+			<div class="col-xs-12 col-md-10">
+				<img src="@asset('img/demo/setup.jpg')" alt="Opsætning" />
+			</div>
+
+		</div>
+			
+	  </div>
+	</div>
+@endblock

@@ -1,0 +1,108 @@
+@extends('base')
+
+@leap('title')
+
+@block('styles')
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="@asset('css/panel/main.css', true)">
+@endblock
+
+@block('body')
+<nav>
+	<div class="row">
+	  
+	  <div class="col-xs-4 dropdown"> 
+		<a onClick="drop();"> 
+		  <div></div> <div></div> <div></div> 
+		</a> 
+	  </div>
+	  
+  <script>
+  function drop() {
+	var nav = document.getElementById("nav");
+	nav.style.display = nav.style.display === 'inline-block' ? 'none' : 'inline-block';
+  }
+  </script>
+
+	  <div class="col-xs-12 nav-content" id="nav">
+	  
+		<p class="title">Generelt</p>
+		<a class="tab" href="/@insert('uri')/">Forside</a>
+		<a class="tab" href="/@insert('uri')/plan">Vagtplan</a>
+		<a class="tab" href="#">Ledige vagter<i class="notify">2</i></a>
+		<a class="tab drop-button">Kalender<i class="material-icons">keyboard_arrow_down</i></a>
+		<div class="drop-content">
+			<a class="tab " href="#">Min kalender</a>
+			<a class="tab " href="#">Fælles kalender</a>
+		</div>
+			
+		<p class="title">System</p>
+		<a class="tab" href="#">Beskeder<i class="notify">6</i></a>
+		<a class="tab" href="#">Indstillinger</a>
+		<a class="tab" href="#">Hjælp</a>
+
+		<p class="title">Administration</p>
+		<a class="tab drop-button">Medarbejdere<i class="material-icons">keyboard_arrow_down</i></a>
+		<div class="drop-content">
+			<a class="tab " href="#">Brugere</a>
+			<a class="tab " href="#">Login historik</a>
+		</div>
+		<a class="tab" href="/@insert('uri')/setup">Opsætning</a>
+	  
+	</div>
+  </nav>
+
+  <main>
+	
+	<section class="top">
+		
+	  <div class="left">
+		<a class="logo" href="#"><img src="@asset('img/workplan.svg')" alt="Workplan" /></a>
+	  </div>
+	  
+	  <div class="right">
+		<ul>
+		  <li><a class="txt">@insert('name')</a></li>
+		  <li><a class="btn" href="/@insert('uri')/logout">Log ud</a></li>
+		</ul>
+	  </div>
+		
+	</section>
+	
+	<section class="content">
+	  
+	  @insert('content')
+		
+	</section>
+	  
+	<section class="bottom">
+	  
+	  <div class="row">	
+		<div class="col-xs-12">
+		  <div class="item"><p>Copyright © @date('Y') Workplan.</br>Alle Rettigheder Reserveret.</p></div>
+		</div>
+	  </div>
+	  
+	</section>
+	  
+  </main>
+
+  <script>
+  var dropdown = document.getElementsByClassName("drop-button");
+  var i;
+
+  for (i = 0; i < dropdown.length; i++) {
+	dropdown[i].addEventListener("click", function() {
+	  this.classList.toggle("active");
+	  var dropdownContent = this.nextElementSibling;
+	  if (dropdownContent.style.display === "block") {
+		dropdownContent.style.display = "none";
+	  } else {
+		dropdownContent.style.display = "block";
+	  }
+	});
+  }
+  </script>
+@endblock
+
+@leap('scripts')
